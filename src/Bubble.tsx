@@ -1,35 +1,32 @@
-import PropTypes from 'prop-types'
-import React from 'react'
 import {
-  Text,
   Clipboard,
+  StyleProp,
   StyleSheet,
+  Text,
+  TextStyle,
   TouchableWithoutFeedback,
   View,
   ViewPropTypes,
-  StyleProp,
   ViewStyle,
-  TextStyle,
 } from 'react-native'
-
-import QuickReplies from './QuickReplies'
-
-import MessageText from './MessageText'
-import MessageImage from './MessageImage'
-import MessageVideo from './MessageVideo'
-
-import Time from './Time'
-import Color from './Color'
-
-import { isSameUser, isSameDay } from './utils'
 import {
-  User,
   IMessage,
   LeftRightStyle,
-  Reply,
-  Omit,
   MessageVideoProps,
+  Omit,
+  Reply,
+  User,
 } from './types'
+import { isSameDay, isSameUser } from './utils'
+
+import Color from './Color'
+import MessageImage from './MessageImage'
+import MessageText from './MessageText'
+import MessageVideo from './MessageVideo'
+import PropTypes from 'prop-types'
+import QuickReplies from './QuickReplies'
+import React from 'react'
+import Time from './Time'
 
 const styles = {
   left: StyleSheet.create({
@@ -378,7 +375,7 @@ export default class Bubble<
   renderTicks() {
     const { currentMessage, renderTicks, user } = this.props
     if (renderTicks && currentMessage) {
-      return renderTicks(currentMessage)
+      return renderTicks(this.props)
     }
     if (
       currentMessage &&
